@@ -96,7 +96,7 @@ class SubscriptionController extends Controller
         if ($attendee->getTicketNumber() === 0) {
             $template = 'emails/no_payment.txt.twig';
         } else {
-            $template = 'emails/payment.txt.twig';
+            $template = 'emails/payment.html.twig';
         }
 
         $message = (new \Swift_Message('Inscription Meeting au Pal - 21 avril 2018'))
@@ -107,7 +107,7 @@ class SubscriptionController extends Controller
                     $template,
                     array('attendee' => $attendee)
                 ),
-                'text/plain'
+                'text/html'
             );
 
         $mailer->send($message);
