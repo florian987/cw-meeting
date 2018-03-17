@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <div class="panel registration-form">
+        <div class="panel-body">
+          <div class="text-center">
+            <h4 class="content-group-lg">Inscription Meeting Coasters World - 21 avril 2018</h4>
+          </div>
+          <p>Cette année, Coasters World t'emmène au Pal pour faire du Quad ! Voici le programme :</p>
+          <ul class="list list-feed">
+            <li>9h30 précises : Rencontre devant les grilles du parc</li>
+            <li>9h45 : Petit-déjeuner offert</li>
+            <li>10h30 - 18h : Journée pleine d'attractions !</li>
+            <li>18h : ERT de 30 minutes sur Yukon Quad</li>
+          </ul>
+          <p>Pour y participer, tu dois t'inscrire en remplissant les informations ci-dessous.</p>
+          <p>
+            Nous devons avoir nos billets dès notre arrivée puisque nous rentrerons dans le parc avant l'ouverture
+            des caisses !
+          </p>
+          <p>
+            Si tu as un pass annuel ou déjà ton billet, c'est parfait. Sinon, le parc nous propose le tarif groupe à
+            23,50€ par personne (tarif unique) à payer en avance via PayPal, Lydia ou Pumpkin après ton inscription.
+            Les informations pour le paiement seront envoyés à l'adresse mail indiquée. <b>Une inscription n'est
+              validée qu'une fois que le paiement a été reçu !</b>
+          </p>
+          <div class="text-right">
+            <a href="{{ path('app_subscription_subscribe') }}">
+              <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

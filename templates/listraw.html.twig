@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Meeting Coasters World au Pal - 21 avril 2018{% endblock %}</title>
+  <!-- Global stylesheets -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+        type="text/css">
+  <link href="{{ asset('assets/css/icons/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets/css/core.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets/css/components.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets/css/colors.css') }}" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="{{ asset('assets/js/core/libraries/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/core/libraries/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/core/app.js') }}"></script>
+  {% block stylesheets %}{% endblock %}
+</head>
+
+<body class="login-container">
+<div class="row">
+  <div class="col-lg-12">
+
+    <!-- List with labels -->
+    <div class="panel panel-flat">
+      <div class="panel-heading">
+        {% set tickets = 0 %}
+        {% for attendee in attendees %}
+          {% set tickets = tickets + attendee.ticketNumber %}
+        {% endfor %}
+        <h5 class="panel-title">{{ tickets }} participants</h5>
+      </div>
+      <ul class="media-list media-list-linked">
+        {% for attendee in attendees %}
+          <li class="media">
+            <a class="media-link">
+              <div class="media-body">
+                <div class="media-heading text-semibold">
+                  {{ attendee.firstname }} {{ attendee.name|first|capitalize }}.
+                  {% if attendee.pseudo %}
+                    ({{ attendee.pseudo }})
+                  {% endif %}
+                </div>
+                {% if attendee.seats > 0 %}
+                  <span class="text-muted">
+                <b>{{ attendee.seats }}</b> places en covoiturage depuis {{ attendee.originCity }}
+              </span>
+                {% endif %}
+              </div>
+              <div class="media-right media-middle">
+                {% if attendee.ticketNumber == 0 %}
+                  <span class="label label-success">INSCRIT</span>
+                {% else %}
+                  {% if attendee.hasPaid %}
+                    <span class="label label-success">PAYÉ</span>
+                  {% else %}
+                    <span class="label label-warning">ATTENTE DU PAIEMENT</span>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <!-- /list with labels -->
+  </div>
+</div>
+</body>
+</html>
+
