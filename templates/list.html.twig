@@ -3,7 +3,11 @@
 {% block body %}
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
-
+      {% for message in app.flashes('success') %}
+        <div class="alert alert-success alert-styled-left alert-arrow-left alert-bordered">
+          {{ message }}
+        </div>
+      {% endfor %}
       <!-- List with labels -->
       <div class="panel panel-flat">
         <div class="panel-heading">

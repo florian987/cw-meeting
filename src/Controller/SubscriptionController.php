@@ -46,7 +46,7 @@ class SubscriptionController extends Controller
                 'Ton inscription est bien prise en compte. Nous avons envoyé un email à l\'adresse indiquée.'
             );
 
-            return $this->redirectToRoute('app_subscription_subscribe');
+            return $this->redirectToRoute('app_subscription_list');
         }
 
         return $this->render(
@@ -107,7 +107,7 @@ class SubscriptionController extends Controller
                     $template,
                     array('attendee' => $attendee)
                 ),
-                'text/html'
+                'text/plain'
             );
 
         $mailer->send($message);
