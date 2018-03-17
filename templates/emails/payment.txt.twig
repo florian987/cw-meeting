@@ -1,3 +1,4 @@
+{% set total = attendee.ticketNumber * 23.5 %}
 Bonjour {{ attendee.firstname }},
 
 Tu t'es inscrit au Meeting Coasters World qui aura lieu au Pal le 21 avril 2018, et tu as choisi de profiter de l'offre groupe que propose le parc.
@@ -5,15 +6,14 @@ Pour valider ton inscription, il faut procéder au paiement des billets au tarif
 
 ATTENTION, aucun remboursement ne peut être fait, même en cas de non-présentation le jour même (puisque le billet aura été acheté).
 
-Tu as demandé {{ attendee.ticketNumber }} places
-{% set total = attendee.ticketNumber * 23.5 %}
+Tu as demandé {{ attendee.ticketNumber }} places.
 Total à payer : {{ total|number_format(2, ',') }} €
 
 Pour payer, plusieurs solutions :
-Paypal -> envoyer {{ total|number_format(2, ',') }} € à florian.blond@gmail.com
-Application mobile Lydia -> envoyer {{ total|number_format(2, ',') }} € au 0684883276
-Application mobile Pumpkin -> envoyer {{ total|number_format(2, ',') }} € au 0684883276
-Virement bancaire -> envoyer un mail à benjamin@coastersworld.fr pour demander le RIB.
+Paypal: envoyer {{ total|number_format(2, ',') }} € à florian.blond@gmail.com
+Lydia: envoyer {{ total|number_format(2, ',') }} € au 0684883276
+Pumpkin: envoyer {{ total|number_format(2, ',') }} € au 0684883276
+Virement bancaire: envoyer un mail à benjamin@coastersworld.fr pour demander le RIB
 
 En cas de souci, n'hésite pas à me contacter à l'adresse mail: benjamin@coastersworld.fr.
 
