@@ -107,7 +107,7 @@ class SubscriptionController extends Controller
                     $template,
                     array('attendee' => $attendee)
                 ),
-                'text/html'
+                'text/plain'
             );
 
         $mailer->send($message);
