@@ -1,0 +1,24 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+    providers:
+        in_memory:
+            memory:
+                users:
+                    benj:
+                        password: '%env(ADMIN_PWD)%'
+                        roles: 'ROLE_USER'
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/admin/
+            anonymous: false
+            http_basic: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }

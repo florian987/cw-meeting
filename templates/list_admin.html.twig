@@ -1,0 +1,37 @@
+<html>
+<head></head>
+<body>
+<table>
+  <tr>
+    <th>Prénom</th>
+    <th>Nom</th>
+    <th>Pseudo</th>
+    <th>Téléphone</th>
+    <th>Mail</th>
+    <th>Places</th>
+    <th>Payé?</th>
+    <th>Covoiturage</th>
+    <th>Valider paiement</th>
+  </tr>
+  {% for attendee in attendees %}
+  <tr>
+    <td>{{ attendee.firstname }}</td>
+    <td>{{ attendee.name }}</td>
+    <td>{{ attendee.pseudo }}</td>
+    <td>{{ attendee.phoneNumber }}</td>
+    <td>{{ attendee.email }}</td>
+    <td>{{ attendee.ticketNumber }}</td>
+    <td>{{ attendee.hasPaid }}</td>
+    <td>
+      {% if attendee.seats > 0 %}
+      {{ attendee.originCity }} ({{ attendee.seats }})
+      {% endif %}
+    </td>
+    <td>
+      <a href="{{ path('app_subscription_confirmpayment', {'id': attendee.id}) }}">Valider paiement</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
