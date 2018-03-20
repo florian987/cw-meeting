@@ -12,7 +12,7 @@
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/css/core.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
-  <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
+  {#<link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">#}
   <!-- /global stylesheets -->
   <!-- Core JS files -->
   {#<script type="text/javascript" src="{{ asset('assets/js/plugins/loaders/pace.min.js') }}"></script>#}
@@ -27,31 +27,32 @@
   <!-- /theme JS files -->
   {% block stylesheets %}{% endblock %}
 </head>
-
-<body class="login-container login-cover"
-      style="background:url(assets/images/yukon.jpg) no-repeat; background-size:cover; background-attachment:fixed;"
->
-<!-- Main navbar -->
-<div class="navbar navbar-inverse">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="{{ path('app_subscription_new') }}">
-      <img src="assets/images/logo_light.png" alt="">
-    </a>
-    <ul class="nav navbar-nav pull-right visible-xs-block">
-      <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-    </ul>
+{% block wide_body %}
+  <body class="login-container login-cover"
+        style="background:url(assets/images/yukon.jpg) no-repeat; background-size:cover; background-attachment:fixed;"
+  >
+  <!-- Main navbar -->
+  <div class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{ path('app_subscription_new') }}">
+        <img src="assets/images/logo_light.png" alt="">
+      </a>
+      <ul class="nav navbar-nav pull-right visible-xs-block">
+        <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="page-container">
-  <div class="page-content">
-    <div class="content-wrapper">
-      <div class="content">
-        {% block body %}{% endblock %}
+  <div class="page-container">
+    <div class="page-content">
+      <div class="content-wrapper">
+        <div class="content">
+          {% block body %}{% endblock %}
+        </div>
       </div>
     </div>
   </div>
-</div>
-{% block javascripts %}{% endblock %}
-</body>
+  {% block javascripts %}{% endblock %}
+  </body>
+{% endblock %}
 </html>
 

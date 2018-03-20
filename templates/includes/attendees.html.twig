@@ -1,0 +1,44 @@
+<div class="panel panel-flat">
+  <div class="panel-heading">
+    {% set tickets = 0 %}
+    {% for attendee in attendees %}
+      {% set tickets = tickets + attendee.ticketNumber %}
+      {% if attendee.ticketNumber == 0 %}
+        {% set tickets = tickets + 1 %}
+      {% endif %}
+    {% endfor %}
+    <h5 class="panel-title">{{ tickets }} participants</h5>
+  </div>
+  <ul class="media-list media-list-linked">
+    {% for attendee in attendees %}
+      <li class="media">
+        <a class="media-link">
+          <div class="media-body">
+            <div class="media-heading text-semibold">
+              {{ attendee.firstname }} {{ attendee.name|first|capitalize }}.
+              {% if attendee.pseudo %}
+                ({{ attendee.pseudo }})
+              {% endif %}
+            </div>
+            {% if attendee.seats > 0 %}
+              <span class="text-muted">
+                <b>{{ attendee.seats }}</b> places en covoiturage depuis {{ attendee.originCity }}
+              </span>
+            {% endif %}
+          </div>
+          <div class="media-right media-middle">
+            {% if attendee.ticketNumber == 0 %}
+              <span class="label label-success">INSCRIT</span>
+            {% else %}
+              {% if attendee.hasPaid %}
+                <span class="label label-success">INSCRIT</span>
+              {% else %}
+                <span class="label label-warning">ATTENTE DU PAIEMENT</span>
+              {% endif %}
+            {% endif %}
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block wide_body %}
+  <body>
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- List with labels -->
+      {% include 'includes/attendees.html.twig' with {'attendees': attendees} only %}
+      <!-- /list with labels -->
+    </div>
+  </div>
+  </body>
+{% endblock %}
+

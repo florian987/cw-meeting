@@ -80,12 +80,12 @@ class SubscriptionController extends Controller
      * @param EntityManagerInterface $em
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listRawAction(EntityManagerInterface $em)
+    public function listIframeAction(EntityManagerInterface $em)
     {
         $attendees = $em->getRepository('App:Attendee')->findBy([], ['updatedAt' => 'desc']);
 
         return $this->render(
-            'list_raw.html.twig',
+            'iframe.html.twig',
             [
                 'attendees' => $attendees,
             ]
