@@ -1,13 +1,19 @@
 <div class="panel panel-flat">
   <div class="panel-heading">
-    {% set tickets = 0 %}
+    {% set registered = 0 %}
+    {% set waitingPayment = 0 %}
     {% for attendee in attendees %}
-      {% set tickets = tickets + attendee.ticketNumber %}
       {% if attendee.ticketNumber == 0 %}
-        {% set tickets = tickets + 1 %}
+        {% set registered = registered + 1 %}
+      {% else %}
+        {% if attendee.hasPaid %}
+          {% set registered = registered + attendee.ticketNumber %}
+        {% else %}
+          {% set waitingPayment = waitingPayment + 1 %}
+        {% endif %}
       {% endif %}
     {% endfor %}
-    <h5 class="panel-title">{{ tickets }} participants</h5>
+    <h5 class="panel-title">{{ registered }} inscrits / {{ waitingPayment }} en attente de paiement</h5>
   </div>
   <ul class="media-list media-list-linked">
     {% for attendee in attendees %}
