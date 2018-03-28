@@ -9,7 +9,7 @@
         {% if attendee.hasPaid %}
           {% set registered = registered + attendee.ticketNumber %}
         {% else %}
-          {% set waitingPayment = waitingPayment + 1 %}
+          {% set waitingPayment = waitingPayment + attendee.ticketNumber %}
         {% endif %}
       {% endif %}
     {% endfor %}
