@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class SubscriptionController extends Controller
 {
@@ -30,7 +29,7 @@ class SubscriptionController extends Controller
     public function subscribeAction(Request $request, \Swift_Mailer $mailer)
     {
         if(!$this->getParameter('subscriptions_open')) {
-            throw $this->createAccessDeniedException();
+            return new Response('Access Denied', 403);
         }
 
         $attendee = new Attendee();
